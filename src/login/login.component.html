@@ -1,0 +1,36 @@
+<div *ngIf="!accesso">
+
+<div *ngIf="viewLogin">
+    <h1>Login</h1>
+    <input type="text" placeholder="Username" [(ngModel)] = "user.username" required />
+    <br><br>
+    <input type="password" placeholder="password" [(ngModel)] = "user.password" required  />
+    <br><br>
+   
+    <button [disabled]="!user.username || !user.password" (click)="accedi()">Accedi</button>
+    <hr>
+    <p>Non hai ancora fatto l'acceso? Clicca su <button (click)="registrati()">Registrati</button></p>
+</div>
+
+<div *ngIf="!viewLogin" >
+    <h1>Registration</h1>
+    <input type="text" placeholder="Username" [(ngModel)] = "newUser.username" required />
+    <br><br>
+    <input type="password" placeholder="password" [(ngModel)] = "newUser.password" required />
+    <br><br>
+    <input type="text" placeholder="password" [(ngModel)] = "newUser.name" required />
+    <br><br>
+    <input type="text" placeholder="password" [(ngModel)] = "newUser.surname" required />
+    <br><br>
+    <input type="email" placeholder="email" [(ngModel)] = "newUser.email" required />
+    <br><br>
+    <button [disabled]="!newUser.username || !newUser.password" (click)="confermaRegistrazione()">Conferma</button>
+    <p *ngIf = "okey">Registrazione effetuata corretamente <button (click)=tornaLogin()> &lt; torna alla login</button></p>
+</div>
+
+</div>
+
+<div *ngIf="accesso">
+    <h1>Benvenuto</h1>
+    <button (click)=comeBack()> &lt; torna alla login</button>
+</div>
